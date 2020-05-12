@@ -1,5 +1,32 @@
 .App {
-  background-color: whitesmoke;
+  background-color: #121D2B;
+  color: #EFEEEE;
   text-align: center;
 }
 
+.here-link {
+  font-weight: bolder;
+}
+
+#checkbox-p {
+  color: #D3FF82;
+}
+
+#username-label {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#email-label {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#password-label {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#login-signup-button {
+  background-color:  #D3FF82;
+}

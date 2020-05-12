@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import LoginRegister from './LoginRegister'
 
 export default class App extends Component {
 
@@ -15,7 +16,7 @@ export default class App extends Component {
   }
 
   register = async (registerInfo) => {
-    let userType = {admin ? admins : users}
+    let userType = this.state.admin ? "admins" : "users"
     const url = process.env.REACT_APP_API_URL + `/api/${userType}/register`
 
     try {
@@ -46,7 +47,8 @@ export default class App extends Component {
 
   login = async (loginInfo) => {
     console.log("login() in App.js called with loginInfo:", loginInfo) 
-    const url = process.env.REACT_APP_API_URL + '/api/users/login'
+    let userType = this.state.admin ? "admins" : "users"
+    const url = process.env.REACT_APP_API_URL + `/api/${userType}/login`
 
     try {
       const loginResponse = await fetch(url, {
@@ -74,7 +76,8 @@ export default class App extends Component {
 
   logout = async () => {
     try {
-      const url = process.env.REACT_APP_API_URL + '/api/users/logout'
+      let userType = this.state.admin ? "admins" : "users"
+      const url = process.env.REACT_APP_API_URL + `/api/${userType}/logout`
       const logoutResponse = await fetch(url, { credentials: 'include' })
       console.log("logoutResponse", logoutResponse)
       const logoutJson = await logoutResponse.json()
@@ -96,13 +99,19 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-
+        {
+          this.state.loggedIn
+          ?
+          <React.Fragment>
+            <p>Header and Container go here!</p>
+          </React.Fragment>
+          :
+          <LoginRegister login={this.login} register={this.register} />
+        }
       </div>
     );
   }
 }
-
-export default App;
 
 
 
