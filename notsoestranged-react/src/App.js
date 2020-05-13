@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import LoginRegister from './LoginRegister'
+import HeaderNav from './HeaderNav'
+import EventDropdown from './EventDropdown'
 
 export default class App extends Component {
 
@@ -10,15 +12,14 @@ export default class App extends Component {
     this.state = {
       loggedIn: false,
       loggedInUserEmail: '',
-      admin: true
+      loggedInUserIsAdmin: false //good to have
     }
 
   }
 
   register = async (registerInfo) => {
-    let userType = this.state.admin ? "admins" : "users"
-    const url = process.env.REACT_APP_API_URL + `/api/${userType}/register`
-
+    const url = process.env.REACT_APP_API_URL + `/api/users/register`
+    //Need to take the is_admin value from the form and add that to the JSON before I send it.
     try {
       const registerResponse = await fetch(url, {
         credentials: 'include',
@@ -47,8 +48,7 @@ export default class App extends Component {
 
   login = async (loginInfo) => {
     console.log("login() in App.js called with loginInfo:", loginInfo) 
-    let userType = this.state.admin ? "admins" : "users"
-    const url = process.env.REACT_APP_API_URL + `/api/${userType}/login`
+    const url = process.env.REACT_APP_API_URL + `/api/users/login`
 
     try {
       const loginResponse = await fetch(url, {
@@ -76,8 +76,7 @@ export default class App extends Component {
 
   logout = async () => {
     try {
-      let userType = this.state.admin ? "admins" : "users"
-      const url = process.env.REACT_APP_API_URL + `/api/${userType}/logout`
+      const url = process.env.REACT_APP_API_URL + `/api/users/logout`
       const logoutResponse = await fetch(url, { credentials: 'include' })
       console.log("logoutResponse", logoutResponse)
       const logoutJson = await logoutResponse.json()
@@ -103,7 +102,8 @@ export default class App extends Component {
           this.state.loggedIn
           ?
           <React.Fragment>
-            <p>Header and Container go here!</p>
+            <HeaderNav email={this.state.loggedInUserEmail} logout={this.logout} />
+            <EventDropdown />
           </React.Fragment>
           :
           <LoginRegister login={this.login} register={this.register} />

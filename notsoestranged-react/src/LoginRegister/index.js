@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Form, Button, Label, Grid, Message, Header, Icon, Checkbox } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
+import RubberBand from 'react-reveal/RubberBand'
+import './index.css'
 
 export default class LoginRegister extends Component {
 
@@ -11,7 +13,13 @@ export default class LoginRegister extends Component {
 			email: '',
 			password: '',
 			username: '',
-			action: 'Login'
+			date_of_birth: '',
+			address: '',
+			phone_number: '',
+			emergency_contact: '',
+			about_me: '',
+			action: 'Login',
+			is_admin: false
 		}
 	}
 
@@ -29,6 +37,21 @@ export default class LoginRegister extends Component {
 		})
 	}
 
+	handleCheckboxChange = (event, { checked }) => {
+		console.log('Change:', checked)
+		if(checked === true) {
+			this.setState({
+				is_admin: true
+			})
+		} else {
+			this.setState({
+				is_admin: false
+			})
+		}
+		console.log("is_admin", this.state.is_admin)
+	}
+
+
 	handleSubmit = (event) => {
 		event.preventDefault()
 		console.log(`You are trying to ${this.state.action.toLowerCase()} with the following credentials:`)
@@ -42,13 +65,16 @@ export default class LoginRegister extends Component {
 	}
 
 	render() {
+		console.log("This is this.state:", this.state)
 		return(
-			<Grid textAlign='center' style={{ height: '105vh' }} verticalAlign='middle'>
+			<Grid textAlign='center' style={{ height: '150vh' }} verticalAlign='middle'>
 				<Grid.Column style={{ maxWidth: 476 }}>
 					<React.Fragment>
-						<Header as='h2' color='olive' textAlign='center'>
-							<Icon name='add user' /> notSoEstranged
-						</Header>
+						<RubberBand>
+							<Header as='h2' color='olive' textAlign='center'>
+								<Icon name='add user' /> notSoEstranged
+							</Header>
+						</RubberBand>
 						<h2>{this.state.action} here</h2>
 						<Form onSubmit={this.handleSubmit}>
 							{
@@ -57,28 +83,88 @@ export default class LoginRegister extends Component {
 								<React.Fragment>
 									<div>
 										<p id="checkbox-p">Are you hosting an event?</p>
-										<Checkbox />
+										<Checkbox
+											checked={this.is_admin}
+											onChange={this.handleCheckboxChange}
+											name="is_admin"
+										/> 
 									</div>
-									<Label id="username-label">Username:</Label>
+									<Label id="username-label">Email:</Label>
 									<Form.Input
-										icon='user'
+										icon='mail'
 										iconPosition='left'
 										type="text"
-										name="username"
-										placeholder="Enter username"
-										value={this.state.username}
+										name="email"
+										placeholder="Enter email"
+										value={this.state.email}
+										onChange={this.handleChange}
+									/>
+									<Label id="dob-label">Date of Birth:</Label>
+									<Form.Input
+										icon='birthday cake'
+										iconPosition='left'
+										type="date"
+										name="date_of_birth"
+										placeholder="Enter date of birth"
+										value={this.state.date_of_birth}
+										onChange={this.handleChange}
+									/>
+									{
+										this.state.is_admin === true
+										&&
+										<React.Fragment>
+											<Label id="address-label">Address:</Label>
+											<Form.Input
+												icon='map pin'
+												iconPosition='left'
+												type="text"
+												name="address"
+												placeholder="Enter address"
+												value={this.state.address}
+												onChange={this.handleChange}
+											/>
+											<Label id="phone-number-label">Phone Number:</Label>
+											<Form.Input
+												icon='mobile'
+												iconPosition='left'
+												type="text"
+												name="phone_number"
+												placeholder="Enter phone number"
+												value={this.state.phone_number}
+												onChange={this.handleChange}
+											/>
+										</React.Fragment>
+									}
+									<Label id="emergency-label">Emergency Contact:</Label>
+									<Form.Input
+										icon='emergency'
+										iconPosition='left'
+										type="text"
+										name="emergency_contact"
+										placeholder="Enter emergency contact"
+										value={this.state.emergency_contact}
+										onChange={this.handleChange}
+									/>
+									<Label id="about-label">About Me:</Label>
+									<Form.Input
+										icon='pencil'
+										iconPosition='left'
+										type="text"
+										name="about_me"
+										placeholder="Tell us something about yourself!"
+										value={this.state.about_me}
 										onChange={this.handleChange}
 									/>
 								</React.Fragment>
 							}
-							<Label id="email-label">Email:</Label>
+							<Label id="email-label">Username:</Label>
 							<Form.Input
-								icon='mail'
+								icon='user'
 								iconPosition='left'
-								type="email"
-								name="email"
-								placeholder="Enter email"
-								value={this.state.email}
+								type="text"
+								name="username"
+								placeholder="Enter username"
+								value={this.state.username}
 								onChange={this.handleChange}
 							/>
 							<Label id="password-label">Password:</Label>

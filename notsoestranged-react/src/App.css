@@ -8,6 +8,10 @@
   font-weight: bolder;
 }
 
+.logout-link {
+  font-weight: bolder;
+}
+
 #checkbox-p {
   color: #D3FF82;
 }
@@ -29,4 +33,33 @@
 
 #login-signup-button {
   background-color:  #D3FF82;
+}
+
+#dob-label {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#address-label {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#phone-number-label {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#emergency-label {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#about-label {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#event-dropdown-div {
+  padding-top: 10px;
 }
