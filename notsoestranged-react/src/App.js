@@ -12,14 +12,14 @@ export default class App extends Component {
     this.state = {
       loggedIn: false,
       loggedInUserEmail: '',
-      loggedInUserIsAdmin: false //good to have
+      userAttendingEvent: false, //Might need? Currently not using it.
+      loggedInUserIsAdmin: false 
     }
 
   }
 
   register = async (registerInfo) => {
     const url = process.env.REACT_APP_API_URL + `/api/users/register`
-    //Need to take the is_admin value from the form and add that to the JSON before I send it.
     try {
       const registerResponse = await fetch(url, {
         credentials: 'include',
@@ -37,6 +37,15 @@ export default class App extends Component {
           loggedInUserEmail: registerJson.data.email
         })
       }
+
+      if(registerJson.data.is_admin === true) {
+        this.setState({
+          loggedInUserIsAdmin: true
+        })
+      }
+
+      console.log("Here is this.state. in App.js. I'm looking to see that loggedInUserIsAdmin is true")
+      console.log(this.state)
 
     } catch(error) {
       console.error("There was a problem trying to register with API.")
@@ -68,6 +77,12 @@ export default class App extends Component {
         })
       }
 
+      if(loginJson.data.is_admin === true) {
+        this.setState({
+          loggedInUserIsAdmin: true
+        })
+      }
+
     } catch(error) {
       console.error("There was a problem logging in.")
       console.error(error)
@@ -95,11 +110,25 @@ export default class App extends Component {
     }
   }
 
+        //USERS SHOULD ONLY BE ABLE TO SEE EVENTS AND BUTTON TO ATTEND EVENT. PASS DOWN LOGGEDINUSERISADMIN?
+        //OR SHOULD I DUPLICATE STUFF?
+
+        //INCLUDE THIS WHEN READY!
+
+        // {
+        //   this.state.loggedIn && this.state.userAttendingEvent === true
+        //   ?
+        //   <React.Fragment>
+        //     <HeaderNav email={this.state.loggedInUserEmail} logout={this.logout} />
+        //     <MainContainer /> //This is the home page for the user!
+        //   </React.Fragment>
+        // } 
+
   render() {
     return (
       <div className="App">
         {
-          this.state.loggedIn
+          this.state.loggedIn && this.state.loggedInUserIsAdmin === true
           ?
           <React.Fragment>
             <HeaderNav email={this.state.loggedInUserEmail} logout={this.logout} />
