@@ -22,6 +22,15 @@ export default function UserEventList(props) {
 						{event.date_of_event}
 					</Card.Meta>
 				</Card.Content>
+				<Card.Content id="card-content-event-list" textAlign={"center"}>
+					<Button
+						basic
+						color='olive'
+						onClick={ () => props.attendEvent(event.id) }
+					>
+						Attend {event.event_name}
+					</Button>
+				</Card.Content> 
 			</Card>
 		)
 	})

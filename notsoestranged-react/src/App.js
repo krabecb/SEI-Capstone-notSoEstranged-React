@@ -82,6 +82,10 @@ export default class App extends Component {
         this.setState({
           loggedInUserIsAdmin: true
         })
+      } else {
+        this.setState({
+          loggedInUserIsAdmin: false
+        })
       }
 
     } catch(error) {
