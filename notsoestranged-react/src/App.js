@@ -128,11 +128,16 @@ export default class App extends Component {
     return (
       <div className="App">
         {
-          this.state.loggedIn && this.state.loggedInUserIsAdmin === true
+          this.state.loggedIn
           ?
           <React.Fragment>
             <HeaderNav email={this.state.loggedInUserEmail} logout={this.logout} />
-            <EventDropdown />
+            {  this.state.loggedInUserIsAdmin === true
+               ?
+               <EventDropdown /> 
+               :
+               <p>Regular user</p>
+            }
           </React.Fragment>
           :
           <LoginRegister login={this.login} register={this.register} />
