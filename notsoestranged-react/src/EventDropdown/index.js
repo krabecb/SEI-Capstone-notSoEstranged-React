@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dropdown, Header } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 import NewEvent from '../NewEvent'
 import EventList from '../EventList'
 import EditEvent from '../EditEvent'

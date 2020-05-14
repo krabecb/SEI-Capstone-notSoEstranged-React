@@ -3,6 +3,7 @@ import './App.css';
 import LoginRegister from './LoginRegister'
 import HeaderNav from './HeaderNav'
 import EventDropdown from './EventDropdown'
+import MainContainer from './MainContainer'
 
 export default class App extends Component {
 
@@ -134,9 +135,9 @@ export default class App extends Component {
             <HeaderNav email={this.state.loggedInUserEmail} logout={this.logout} />
             {  this.state.loggedInUserIsAdmin === true
                ?
-               <EventDropdown /> 
+               <EventDropdown  /> 
                :
-               <p>Regular user</p>
+               <MainContainer />
             }
           </React.Fragment>
           :
