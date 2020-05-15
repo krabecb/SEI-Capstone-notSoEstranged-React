@@ -58,7 +58,6 @@ export default class Home extends Component {
 		}
 	}
 
-//CHANGE URL TO TAKE EVENT ID event id here. CHANGE URL IN FLASK. ID is in props!
 	createStatus = async (statusToAdd) => {
 		console.log("Here is the status you're trying to add:")
 		console.log(statusToAdd)
