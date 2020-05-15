@@ -30,7 +30,7 @@ export default class NewStatus extends Component {
 			<Segment id='new-status'>
 				<h4 id="new-status-header">What's on your mind?</h4>
 				<Form id="new-status-form" onSubmit={this.handleSubmit}>
-					<Label id="status">Status</Label>
+					<Label id="status-label">Status</Label>
 					<Form.Input
 						type="text"
 						name="status"

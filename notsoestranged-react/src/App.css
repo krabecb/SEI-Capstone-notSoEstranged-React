@@ -107,3 +107,25 @@
   justify-content: space-evenly;
   flex-direction: column;
 }
+
+#new-status {
+background-color: #363D52;
+}
+
+#new-status-header {
+  color: #D3FF82
+}
+
+#new-status-form {
+  background-color: #363D52;
+}
+
+#status-label {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#post-status {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
