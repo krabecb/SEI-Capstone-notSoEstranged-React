@@ -59,7 +59,7 @@ export default class LoginRegister extends Component {
 	}
 
 	render() {
-		console.log("This is this.state:", this.state)
+		
 		return(
 			<Grid textAlign='center' style={{ height: '150vh' }} verticalAlign='middle'>
 				<Grid.Column style={{ maxWidth: 476 }}>

@@ -29,7 +29,7 @@ export default class MainContainer extends Component {
 			const attendancesJson = await attendancesResponse.json()
 
 			this.setState({
-				eventsUserIsAttending: attendancesJson.data
+				eventsUserIsAttending: [attendancesJson.data[0].event]
 			})
 			console.log("Here is attendancesJson.data from getAttendances():")
 			console.log(attendancesJson.data)

@@ -115,20 +115,6 @@ export default class App extends Component {
     }
   }
 
-        //USERS SHOULD ONLY BE ABLE TO SEE EVENTS AND BUTTON TO ATTEND EVENT. PASS DOWN LOGGEDINUSERISADMIN?
-        //OR SHOULD I DUPLICATE STUFF?
-
-        //INCLUDE THIS WHEN READY!
-
-        // {
-        //   this.state.loggedIn && this.state.userAttendingEvent === true
-        //   ?
-        //   <React.Fragment>
-        //     <HeaderNav email={this.state.loggedInUserEmail} logout={this.logout} />
-        //     <MainContainer /> //This is the home page for the user!
-        //   </React.Fragment>
-        // } 
-
   render() {
     return (
       <div className="App">

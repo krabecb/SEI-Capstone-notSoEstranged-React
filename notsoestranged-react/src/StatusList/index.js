@@ -1,5 +1,5 @@
 import React from 'react'
-import { Comment, Button, Header } from 'semantic-ui-react'
+import { Comment } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
 export default function StatusList(props) {
@@ -7,11 +7,11 @@ export default function StatusList(props) {
 	console.log(props)
 	const statuses = props.statuses.map(status => {
 		return(
-			<React.Fragment>
+			<React.Fragment key={status.id}>
 
 				<Comment.Group>
 
-					<Comment key={status.id} id="status-comment">
+					<Comment id="status-comment">
 						<Comment.Content textalign={"center"}>
 							<Comment.Author as='a'>
 								{status.user.username}
