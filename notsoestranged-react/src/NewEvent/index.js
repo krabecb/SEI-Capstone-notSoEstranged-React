@@ -35,8 +35,8 @@ export default class NewEvent extends Component {
 	render() {
 		return(
 			<Segment id='new-event'>
-				<h4>Create an Event:</h4>
-				<Form onSubmit={this.handleSubmit}>
+				<h4 id="new-event-header">Create an Event:</h4>
+				<Form id="new-event-form" onSubmit={this.handleSubmit}>
 					<Label id="event-name">Name of Event:</Label>
 					<Form.Input
 						type="text"
@@ -53,7 +53,7 @@ export default class NewEvent extends Component {
 						placeholder="Enter event organizer"
 						onChange={this.handleChange}
 					/>
-					<Label id="event_location">Location of Event:</Label>
+					<Label id="event-location">Location of Event:</Label>
 					<Form.Input
 						type="text"
 						name="event_location"

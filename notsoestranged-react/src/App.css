@@ -63,3 +63,47 @@
 #event-dropdown-div {
   padding-top: 10px;
 }
+
+#new-event-header {
+  color: #D3FF82;
+}
+
+#new-event-form {
+  background-color: #363D52;
+}
+
+#new-event {
+  background-color: #363D52;
+}
+
+#event-name {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#event-organizer {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#event-location {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#date-of-event {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#add-event {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#card-content-event-list {
+  background-color: #111B1C;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
