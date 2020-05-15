@@ -13,7 +13,6 @@ export default class App extends Component {
     this.state = {
       loggedIn: false,
       loggedInUserEmail: '',
-      userAttendingEvent: false, //Might need? Currently not using it.
       loggedInUserIsAdmin: false 
     }
 
@@ -105,7 +104,8 @@ export default class App extends Component {
       if(logoutResponse.status === 200) {
         this.setState({
           loggedIn: false,
-          loggedInUserEmail: ''
+          loggedInUserEmail: '',
+          loggedInUserIsAdmin: false
          })
       }
 

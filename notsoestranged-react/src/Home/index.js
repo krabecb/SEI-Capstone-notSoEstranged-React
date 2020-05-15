@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NewStatus from '../NewStatus'
 
-export default class StatusContainer extends Component {
+export default class Home extends Component {
 
 	constructor(props) {
 		super(props)
@@ -13,7 +13,7 @@ export default class StatusContainer extends Component {
 	}
 
 	componentDidMount() {
-		console.log("This is componentDidMount() in StatusContainer:")
+		console.log("This is componentDidMount() in Home:")
 		this.getStatuses()
 		console.log("Here is this.state in componentDidMount():")
 		console.log(this.state)
@@ -128,7 +128,7 @@ export default class StatusContainer extends Component {
 	}
 
 	closeModal = () => {
-		console.log("Here is closeModal in StatusContainer")
+		console.log("Here is closeModal in Home:")
 		this.setState({
 			idOfStatusToEdit: -1
 		})
@@ -136,7 +136,10 @@ export default class StatusContainer extends Component {
 
 	render() {
 		return(
+			<React.Fragment>
+			<p>{this.props.eventUserIsAttending.event_name}</p>
 			<NewStatus createStatus={this.createStatus} />
+			</React.Fragment>
 		)
 	}
 }

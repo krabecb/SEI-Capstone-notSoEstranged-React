@@ -64,14 +64,13 @@ export default class MainContainer extends Component {
 		})
 	}
 
-	userAttendEvent = async (attendEventInfo) =>{
+	userAttendEvent = async () =>{
 		const url = process.env.REACT_APP_API_URL + "/api/users/" + this.state.idOfEventToAttend
 
 		try {
 			const attendEventResponse = await fetch(url, {
 				credentials: 'include',
 				method: 'POST',
-				body: JSON.stringify(attendEventInfo),
 				headers: {
 					'Content-Type': 'application/json'
 				}
@@ -86,9 +85,8 @@ export default class MainContainer extends Component {
 			if(attendEventResponse.status === 201) {
 				const events = this.state.events
 				const indexOfEventBeingAttended = events.findIndex(event => event.id === this.state.idOfEventToAttend)
-				events[indexOfEventBeingAttended] = attendEventJson.data
 				this.setState({
-					events: events,
+					eventsUserIsAttending: [events[indexOfEventBeingAttended]],
 					idOfEventToAttend: -1 //close the modal
 				})
 			}
@@ -121,7 +119,7 @@ export default class MainContainer extends Component {
 						{
 							this.state.eventsUserIsAttending.length > 0
 							?
-							<Home />
+							<Home eventUserIsAttending={this.state.eventsUserIsAttending[0]}/>
 							:
 							<UserEventList events={this.state.events} attendEvent={this.attendEvent}/>
 						}
@@ -130,7 +128,7 @@ export default class MainContainer extends Component {
 				{
 					this.state.idOfEventToAttend !== -1
 					&&
-					<ConfirmEvent events={this.state.events} userAttendEvent={this.userAttendEvent} closeModal={this.closeModal} />
+					<ConfirmEvent events={this.state.events} userAttendEvent={this.userAttendEvent} />
 				}
 			</div>
 		)
