@@ -157,6 +157,7 @@ export default class EventDropdown extends Component {
 		this.setState({
 			idOfEventToAttendAdmin: idOfEventToAttendAdmin
 		})
+
 	}
 
 	userAttendEvent = async (attendEventInfo) =>{
@@ -187,6 +188,8 @@ export default class EventDropdown extends Component {
 					idOfEventToAttendAdmin: -1, //close the modal
 				})
 			}
+
+			this.closeAttendModal();
 		} catch(error) {
 			console.error("There was a problem updating event info")
 			console.error(error)
@@ -201,7 +204,6 @@ export default class EventDropdown extends Component {
 	}
 
 	closeAttendModal = () => {
-		console.log("Here is closeAttendModal in MainContainer")
 		this.setState({
 			idOfEventToAttendAdmin: -1
 		})

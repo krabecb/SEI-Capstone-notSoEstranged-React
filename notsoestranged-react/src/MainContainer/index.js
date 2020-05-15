@@ -92,6 +92,8 @@ export default class MainContainer extends Component {
 					idOfEventToAttend: -1 //close the modal
 				})
 			}
+
+			this.closeModal()
 		} catch(error) {
 			console.error("There was a problem updating event info")
 			console.error(error)
