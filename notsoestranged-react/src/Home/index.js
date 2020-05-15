@@ -58,12 +58,13 @@ export default class Home extends Component {
 		}
 	}
 
+//CHANGE URL TO TAKE EVENT ID event id here. CHANGE URL IN FLASK. ID is in props!
 	createStatus = async (statusToAdd) => {
 		console.log("Here is the status you're trying to add:")
 		console.log(statusToAdd)
 
 		try {
-			const url = process.env.REACT_APP_API_URL + "/api/statuses/"
+			const url = process.env.REACT_APP_API_URL + "/api/statuses/" + this.props.eventUserIsAttending.id
 			const createStatusResponse = await fetch(url, {
 				credentials: 'include',
 				method: 'POST',
