@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import UserEventList from '../UserEventList'
 import ConfirmEvent from '../ConfirmEvent'
+import Home from '../Home'
 
 export default class MainContainer extends Component {
 
@@ -9,15 +10,33 @@ export default class MainContainer extends Component {
 
 		this.state = {
 			events: [],
+			eventsUserIsAttending: [],
 			idOfEventToAttend: -1,
-			userAttendingEvent: false
 		}
 	}
 
 	componentDidMount() {
 		console.log("This is componentDidMount() in MainContainer:")
 		this.getEvents()
+		this.getAttendances()
 		console.log(this.state)
+	}
+
+	getAttendances = async () => {
+		try {
+			const url = process.env.REACT_APP_API_URL + "/api/attendances/"
+			const attendancesResponse = await fetch(url, { credentials: 'include' })
+			const attendancesJson = await attendancesResponse.json()
+
+			this.setState({
+				eventsUserIsAttending: attendancesJson.data
+			})
+			console.log("Here is attencesJson.data from getAttendances():")
+			console.log(attendancesJson.data)
+
+		} catch(error) {
+			console.error("There was a problem getting event data:", error)
+		}
 	}
 
 	getEvents = async () => {
@@ -70,8 +89,7 @@ export default class MainContainer extends Component {
 				events[indexOfEventBeingAttended] = attendEventJson.data
 				this.setState({
 					events: events,
-					idOfEventToAttend: -1, //close the modal
-					userAttendingEvent: true
+					idOfEventToAttend: -1 //close the modal
 				})
 			}
 		} catch(error) {
@@ -97,17 +115,20 @@ export default class MainContainer extends Component {
 					?
 					<p>There are no events yet</p>
 					:
-					<UserEventList events={this.state.events} attendEvent={this.attendEvent}/>
+					<div>
+						{
+							this.state.eventsUserIsAttending.length >= 0
+							?
+							<Home />
+							:
+							<UserEventList events={this.state.events} attendEvent={this.attendEvent}/>
+						}
+					</div>
 				}
 				{
 					this.state.idOfEventToAttend !== -1
 					&&
 					<ConfirmEvent events={this.state.events} userAttendEvent={this.userAttendEvent} closeModal={this.closeModal} />
-				}
-				{
-					this.state.userAttendingEvent === true
-					&&
-					<p>Non-admin user should see this right after they log in if they are attending an event! :)</p>
 				}
 			</div>
 		)
