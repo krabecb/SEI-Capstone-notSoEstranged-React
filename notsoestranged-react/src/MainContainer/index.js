@@ -31,7 +31,7 @@ export default class MainContainer extends Component {
 			this.setState({
 				eventsUserIsAttending: attendancesJson.data
 			})
-			console.log("Here is attencesJson.data from getAttendances():")
+			console.log("Here is attendancesJson.data from getAttendances():")
 			console.log(attendancesJson.data)
 
 		} catch(error) {

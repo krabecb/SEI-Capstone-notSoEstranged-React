@@ -3,6 +3,8 @@ import { Header } from 'semantic-ui-react'
 import NewEvent from '../NewEvent'
 import EventList from '../EventList'
 import EditEvent from '../EditEvent'
+import ConfirmAdminEvent from '../ConfirmAdminEvent'
+import Home from '../Home'
 
 export default class EventDropdown extends Component {
 
@@ -11,14 +13,34 @@ export default class EventDropdown extends Component {
 
 		this.state = {
 			events: [],
+			eventsUserIsAttending: [],
 			idOfEventToEdit: -1,
-			idOfEventToAttend: -1
+			idOfEventToAttendAdmin: -1
 		}
 	}
 
 	componentDidMount() {
 		console.log("This is componentDidMount()")
 		this.getEvents()
+		this.getAttendances()
+		console.log(this.state)
+	}
+
+	getAttendances = async () => {
+		try {
+			const url = process.env.REACT_APP_API_URL + "/api/attendances/"
+			const attendancesResponse = await fetch(url, { credentials: 'include' })
+			const attendancesJson = await attendancesResponse.json()
+
+			this.setState({
+				eventsUserIsAttending: attendancesJson.data
+			})
+			console.log("Here is attendancesJson.data from getAttendances():")
+			console.log(attendancesJson.data)
+
+		} catch(error) {
+			console.error("There was a problem getting event data:", error)
+		}
 	}
 
 	getEvents = async () => {
@@ -129,21 +151,21 @@ export default class EventDropdown extends Component {
 		}
 	}
 
-	attendEvent = (idOfEventToAttend) => {
-		console.log("You are trying to attend an event with id:", idOfEventToAttend)
+	attendEvent = (idOfEventToAttendAdmin) => {
+		console.log("You are trying to attend an event with id:", idOfEventToAttendAdmin)
 
 		this.setState({
-			idOfEventToAttend: idOfEventToAttend
+			idOfEventToAttendAdmin: idOfEventToAttendAdmin
 		})
 	}
 
 	userAttendEvent = async (attendEventInfo) =>{
-		const url = process.env.REACT_APP_API_URL + "/api/users/" + this.state.idOfEventToAttend
+		const url = process.env.REACT_APP_API_URL + "/api/users/" + this.state.idOfEventToAttendAdmin
 
 		try {
 			const attendEventResponse = await fetch(url, {
 				credentials: 'include',
-				method: 'PUT',
+				method: 'POST',
 				body: JSON.stringify(attendEventInfo),
 				headers: {
 					'Content-Type': 'application/json'
@@ -158,11 +180,11 @@ export default class EventDropdown extends Component {
 
 			if(attendEventResponse.status === 200) {
 				const events = this.state.events
-				const indexOfEventBeingAttended = events.findIndex(event => event.id === this.state.idOfEventToAttend)
+				const indexOfEventBeingAttended = events.findIndex(event => event.id === this.state.idOfEventToAttendAdmin)
 				events[indexOfEventBeingAttended] = attendEventJson.data
 				this.setState({
 					events: events,
-					idOfEventToAttend: -1 //close the modal
+					idOfEventToAttendAdmin: -1, //close the modal
 				})
 			}
 		} catch(error) {
@@ -178,14 +200,29 @@ export default class EventDropdown extends Component {
 		})
 	}
 
+	closeAttendModal = () => {
+		console.log("Here is closeAttendModal in MainContainer")
+		this.setState({
+			idOfEventToAttendAdmin: -1
+		})
+	}
+
 	render() { 
 		return(
 			<div id="event-dropdown-div">
-				<Header as='h2' color='olive' textAlign='center'>
-					Where you headed off to this time? 
-				</Header>
-				<NewEvent createEvent={this.createEvent} />
-				<EventList events={this.state.events} deleteEvent={this.deleteEvent} editEvent={this.editEvent} attendEvent={this.attendEvent} />
+				{
+					this.state.eventsUserIsAttending.length > 0
+					?
+					<Home />
+					:
+					<React.Fragment>
+						<Header as='h2' color='olive' textAlign='center'>
+							Where you headed off to this time? 
+						</Header>
+						<NewEvent createEvent={this.createEvent} />
+						<EventList events={this.state.events} deleteEvent={this.deleteEvent} editEvent={this.editEvent} attendEvent={this.attendEvent} />
+					</React.Fragment>
+				}
 				{
 					this.state.idOfEventToEdit !== -1
 					&&
@@ -195,6 +232,11 @@ export default class EventDropdown extends Component {
 						updateEvent={this.updateEvent}
 						closeModal={this.closeModal}
 					/>
+				}
+				{
+					this.state.idOfEventToAttendAdmin !== -1
+					&&
+					<ConfirmAdminEvent events={this.state.events} userAttendEvent={this.userAttendEvent} closeAttendModal={this.closeAttendModal} />
 				}
 			</div>
 		)
