@@ -39,15 +39,9 @@ export default class LoginRegister extends Component {
 
 	handleCheckboxChange = (event, { checked }) => {
 		console.log('Change:', checked)
-		if(checked === true) {
-			this.setState({
-				is_admin: true
-			})
-		} else {
-			this.setState({
-				is_admin: false
-			})
-		}
+		this.setState({
+			is_admin: !this.state.is_admin
+		})
 		console.log("is_admin", this.state.is_admin)
 	}
 
@@ -84,7 +78,7 @@ export default class LoginRegister extends Component {
 									<div>
 										<p id="checkbox-p">Are you hosting an event?</p>
 										<Checkbox
-											checked={this.is_admin}
+											checked={this.state.is_admin}
 											onChange={this.handleCheckboxChange}
 											name="is_admin"
 										/> 

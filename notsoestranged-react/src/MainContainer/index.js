@@ -117,7 +117,7 @@ export default class MainContainer extends Component {
 					:
 					<div>
 						{
-							this.state.eventsUserIsAttending.length >= 0
+							this.state.eventsUserIsAttending.length > 0
 							?
 							<Home />
 							:
