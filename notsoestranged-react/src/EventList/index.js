@@ -37,13 +37,6 @@ export default function EventList(props) {
 					>
 						Edit {event.event_name}
 					</Button>
-					<Button
-						basic
-						color='olive'
-						onClick={ () => props.attendEvent(event.id) }
-					>
-						Attend {event.event_name}
-					</Button>
 				</Card.Content> 
 			</Card>
 		)
