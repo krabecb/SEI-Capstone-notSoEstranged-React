@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import NewStatus from '../NewStatus'
+import StatusList from '../StatusList'
 
 export default class Home extends Component {
 
@@ -139,6 +140,8 @@ export default class Home extends Component {
 			<React.Fragment>
 			<p>{this.props.eventUserIsAttending.event_name}</p>
 			<NewStatus createStatus={this.createStatus} />
+			<h3 id="your-thoughts">Your Thoughts</h3>
+			<StatusList statuses={this.state.statuses} />
 			</React.Fragment>
 		)
 	}

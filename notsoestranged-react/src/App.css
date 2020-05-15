@@ -129,3 +129,12 @@ background-color: #363D52;
   background-color: #111B1C;
   color: #D3FF82;
 }
+
+#status-comment {
+  background-color: #EFEEEE;
+  border-radius: 8px;
+}
+
+#your-thoughts {
+  color: #D3FF82;
+}
