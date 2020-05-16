@@ -133,8 +133,28 @@ background-color: #363D52;
 #status-comment {
   background-color: #EFEEEE;
   border-radius: 8px;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  margin-bottom: 10px;
+  width: max-content;
 }
 
-#your-thoughts {
+#news-feed {
+  color: #D3FF82;
+}
+
+#map-location {
+  color: #D3FF82;
+}
+
+#home-event-name {
+  color: #D3FF82;
+}
+
+#home-event-date {
+  color: #D3FF82;
+}
+
+#home-event-location {
   color: #D3FF82;
 }

@@ -139,10 +139,20 @@ export default class Home extends Component {
 	render() {
 		return(
 			<React.Fragment>
-				<p>{this.props.eventUserIsAttending.event_name}</p>
+				<h1 id="home-event-name">{this.props.eventUserIsAttending.event_name}</h1>
+				<h3 id="home-event-date">{this.props.eventUserIsAttending.date_of_event}</h3>
+				<h4 id="home-event-location">{this.props.eventUserIsAttending.event_location}</h4>
 				<NewStatus createStatus={this.createStatus} />
-				<h3 id="your-thoughts">Your Thoughts</h3>
+				<h3 id="news-feed">News Feed</h3>
+				<div style={{
+					display: 'flex',
+					justifyContent: 'center',
+					paddingTop: '20px',
+					paddingBottom: '20px'
+				}}>
 				<StatusList statuses={this.state.statuses} />
+				</div>
+				<h3 id="map-location">Event Location</h3>
 				<GoogleMap />
 			</React.Fragment>
 		)

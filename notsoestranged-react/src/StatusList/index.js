@@ -1,5 +1,5 @@
 import React from 'react'
-import { Comment } from 'semantic-ui-react'
+import { Comment, Grid } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
 export default function StatusList(props) {
@@ -8,6 +8,8 @@ export default function StatusList(props) {
 	const statuses = props.statuses.map(status => {
 		return(
 			<React.Fragment key={status.id}>
+
+				<Grid centered columns={2}>
 
 				<Comment.Group>
 
@@ -27,6 +29,8 @@ export default function StatusList(props) {
 					</Comment>
 
 				</Comment.Group>
+
+				</Grid>
 
 			</React.Fragment>
 		)
