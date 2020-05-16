@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NewStatus from '../NewStatus'
 import StatusList from '../StatusList'
+import GoogleMap from '../GoogleMap'
 
 export default class Home extends Component {
 
@@ -138,10 +139,11 @@ export default class Home extends Component {
 	render() {
 		return(
 			<React.Fragment>
-			<p>{this.props.eventUserIsAttending.event_name}</p>
-			<NewStatus createStatus={this.createStatus} />
-			<h3 id="your-thoughts">Your Thoughts</h3>
-			<StatusList statuses={this.state.statuses} />
+				<p>{this.props.eventUserIsAttending.event_name}</p>
+				<NewStatus createStatus={this.createStatus} />
+				<h3 id="your-thoughts">Your Thoughts</h3>
+				<StatusList statuses={this.state.statuses} />
+				<GoogleMap />
 			</React.Fragment>
 		)
 	}
