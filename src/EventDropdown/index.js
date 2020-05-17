@@ -142,7 +142,7 @@ export default class EventDropdown extends Component {
 				{
 					<React.Fragment>
 						<Header as='h2' color='olive' textAlign='center'>
-							Where you headed off to this time? 
+							Admin Tools 
 						</Header>
 						<NewEvent createEvent={this.createEvent} />
 						<EventList events={this.state.events} deleteEvent={this.deleteEvent} editEvent={this.editEvent}/>

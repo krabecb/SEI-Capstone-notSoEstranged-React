@@ -181,7 +181,7 @@ background-color: #363D52;
 }
 
 #edit-status-header {
-   background-color: #111B1C;
+  background-color: #111B1C;
   color: #D3FF82;
 }
 
@@ -191,11 +191,61 @@ background-color: #363D52;
 }
 
 #edit-status-name {
-  background-color: #363D52;
+  background-color: #111B1C;
   color: #D3FF82;
 }
 
 #update-status {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#edit-event-header {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#modal-content-edit {
+  background-color: #363D52;
+  color: #D3FF82;
+}
+
+#edit-event-name {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#edit-event-organizer {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#edit-event-location {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#edit-date-of-event {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#edit-event-description {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#edit-event-longitude {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#edit-event-latitude {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#update-event {
   background-color: #111B1C;
   color: #D3FF82;
 }
