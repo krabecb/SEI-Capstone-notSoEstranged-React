@@ -142,6 +142,7 @@ export default class Home extends Component {
 				<h1 id="home-event-name">{this.props.eventUserIsAttending.event_name}</h1>
 				<h3 id="home-event-date">{this.props.eventUserIsAttending.date_of_event}</h3>
 				<h4 id="home-event-location">{this.props.eventUserIsAttending.event_location}</h4>
+				<h4 id="home-event-description">{this.props.eventUserIsAttending.event_description}</h4>
 				<NewStatus createStatus={this.createStatus} />
 				<h3 id="news-feed">News Feed</h3>
 				<div style={{
@@ -153,7 +154,7 @@ export default class Home extends Component {
 				<StatusList statuses={this.state.statuses} />
 				</div>
 				<h3 id="map-location">Event Location</h3>
-				<GoogleMap />
+				<GoogleMap longitude={this.props.eventUserIsAttending.longitude} latitude={this.props.eventUserIsAttending.latitude} />
 			</React.Fragment>
 		)
 	}

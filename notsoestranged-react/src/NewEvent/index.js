@@ -9,7 +9,10 @@ export default class NewEvent extends Component {
 			event_name: '',
 			event_organizer: '',
 			event_location: '',
-			date_of_event: ''
+			date_of_event: '',
+			event_description: '',
+			longitude: '',
+			latitude: ''
 		}
 	}
 
@@ -27,7 +30,10 @@ export default class NewEvent extends Component {
 			event_name: '',
 			event_organizer: '',
 			event_location: '',
-			date_of_event: ''
+			date_of_event: '',
+			event_description: '',
+			longitude: '',
+			latitude: ''
 		})
 	}
 	
@@ -66,6 +72,30 @@ export default class NewEvent extends Component {
 						name="date_of_event"
 						value={this.state.date_of_event}
 						placeholder="Enter date(s)"
+						onChange={this.handleChange}
+					/>
+					<Label id="event_description">Description of Event:</Label>
+					<Form.Input
+						type="text"
+						name="event_description"
+						value={this.state.event_description}
+						placeholder="What's your event about?"
+						onChange={this.handleChange}
+					/>
+					<Label id="event-longitude">Longitude:</Label>
+					<Form.Input
+						type="text"
+						name="longitude"
+						value={this.state.longitude}
+						placeholder="Enter longitude of event location"
+						onChange={this.handleChange}
+					/>
+					<Label id="event-latitude">Latitude:</Label>
+					<Form.Input
+						type="text"
+						name="latitude"
+						value={this.state.latitude}
+						placeholder="Enter latitude of event location"
 						onChange={this.handleChange}
 					/>
 					<Button id="add-event" type="Submit">Add Event</Button>

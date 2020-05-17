@@ -5,6 +5,9 @@ import { Container } from 'semantic-ui-react'
 class GoogleMap extends Component {
 
 	render() {
+		console.log("This is props:")
+		console.log(this.props.longitude)
+		console.log(this.props.latitude)
 
 		return(
 
@@ -13,7 +16,7 @@ class GoogleMap extends Component {
 				<Map
 					google={this.props.google}
 					zoom={14}
-					initialCenter={{lat: 41.850539, lng: -87.615857}}
+					initialCenter={{lat: 41.852140, lng: -87.618258}}
 					style={{width: '75%', height: '75%', position: 'relative'}}
 				>
 
@@ -21,7 +24,8 @@ class GoogleMap extends Component {
 	        		<Marker
 	        			title={'C2E2'}
 	                	name={'C2E2'}
-	                	position={{lat: 41.850539, lng: -87.615857}} />
+	                	position={{lat: this.props.latitude, lng: this.props.longitude }}
+	                />
 	 
 	       		
 
@@ -35,6 +39,7 @@ class GoogleMap extends Component {
 
 }
 
-export default GoogleApiWrapper({
-  apiKey: ("AIzaSyAws8B11fYYJ6jjzzyj_MJArnMrzB5S3-0")
-})(GoogleMap)	
+export default GoogleApiWrapper(
+	(props) => ({
+  apiKey: "AIzaSyAws8B11fYYJ6jjzzyj_MJArnMrzB5S3-0",
+}))(GoogleMap)	
