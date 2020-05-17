@@ -120,7 +120,7 @@ export default class Home extends Component {
 				statuses[indexOfStatusBeingUpdated] = updateStatusJson.data
 				this.setState({
 					statuses: statuses,
-					idOfStatusToEdit: -1
+					idOfStatusToEdit: -1 //close the modal
 				})
 			}
 		} catch(error) {
