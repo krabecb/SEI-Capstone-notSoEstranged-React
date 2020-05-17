@@ -127,7 +127,7 @@ export default class App extends Component {
                ?
                <EventDropdown  /> 
                :
-               <MainContainer />
+               <MainContainer loggedInUserEmail={this.state.loggedInUserEmail} />
             }
           </React.Fragment>
           :

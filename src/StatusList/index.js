@@ -24,10 +24,14 @@ export default function StatusList(props) {
 							<Comment.Text>
 								{status.status}
 							</Comment.Text>
-							<Comment.Actions>
-								<Comment.Action color='orange' onClick={ () => props.editStatus(status.id) }>Edit</Comment.Action>
-								<Comment.Action onClick={ () => props.deleteStatus(status.id) }>Delete</Comment.Action>
-							</Comment.Actions>
+							{
+								props.loggedInUserEmail === status.user.email
+								&&
+								<Comment.Actions>
+									<Comment.Action color='orange' onClick={ () => props.editStatus(status.id) }>Edit</Comment.Action>
+									<Comment.Action onClick={ () => props.deleteStatus(status.id) }>Delete</Comment.Action>
+								</Comment.Actions>
+							}
 						</Comment.Content>
 					</Comment>
 

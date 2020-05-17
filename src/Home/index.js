@@ -138,6 +138,7 @@ export default class Home extends Component {
 	}
 
 	render() {
+
 		return(
 			<div>
 				{
@@ -154,7 +155,7 @@ export default class Home extends Component {
 							paddingTop: '20px',
 							paddingBottom: '20px'
 						}}>
-						<StatusList statuses={this.state.statuses} deleteStatus={this.deleteStatus} editStatus={this.editStatus} />
+						<StatusList statuses={this.state.statuses} deleteStatus={this.deleteStatus} editStatus={this.editStatus} loggedInUserEmail={this.props.loggedInUserEmail} />
 						</div>
 						<h3 id="map-location">Event Location</h3>
 						<GoogleMap longitude={this.props.eventUserIsAttending.longitude} latitude={this.props.eventUserIsAttending.latitude} />

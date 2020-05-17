@@ -119,7 +119,7 @@ export default class MainContainer extends Component {
 						{
 							this.state.eventsUserIsAttending.length > 0
 							?
-							<Home eventUserIsAttending={this.state.eventsUserIsAttending[0]} />
+							<Home eventUserIsAttending={this.state.eventsUserIsAttending[0]} loggedInUserEmail={this.props.loggedInUserEmail} />
 							:
 							<UserEventList events={this.state.events} attendEvent={this.attendEvent}/>
 						}
