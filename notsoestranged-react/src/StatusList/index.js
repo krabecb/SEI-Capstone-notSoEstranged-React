@@ -24,7 +24,9 @@ export default function StatusList(props) {
 							<Comment.Text>
 								{status.status}
 							</Comment.Text>
-							
+							<Comment.Actions>
+								<Comment.Action onClick={ () => props.deleteStatus(status.id) }>Delete</Comment.Action>
+							</Comment.Actions>
 						</Comment.Content>
 					</Comment>
 

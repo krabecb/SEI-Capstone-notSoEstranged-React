@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
 import { Container } from 'semantic-ui-react'
 
 class GoogleMap extends Component {
@@ -15,7 +15,7 @@ class GoogleMap extends Component {
 
 				<Map
 					google={this.props.google}
-					zoom={14}
+					zoom={12}
 					initialCenter={{lat: 41.852140, lng: -87.618258}}
 					style={{width: '75%', height: '75%', position: 'relative'}}
 				>
