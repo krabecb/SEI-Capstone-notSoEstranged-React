@@ -179,3 +179,23 @@ background-color: #363D52;
   background-color: #111B1C;
   color: #D3FF82;
 }
+
+#edit-status-header {
+   background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#modal-content-edit-status {
+  background-color: #363D52;
+  color: #D3FF82;
+}
+
+#edit-status-name {
+  background-color: #363D52;
+  color: #D3FF82;
+}
+
+#update-status {
+  background-color: #111B1C;
+  color: #D3FF82;
+}

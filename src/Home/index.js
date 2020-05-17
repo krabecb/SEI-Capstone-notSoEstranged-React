@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NewStatus from '../NewStatus'
 import StatusList from '../StatusList'
 import GoogleMap from '../GoogleMap'
+import EditStatus from '../EditStatus'
 
 export default class Home extends Component {
 
@@ -138,24 +139,38 @@ export default class Home extends Component {
 
 	render() {
 		return(
-			<React.Fragment>
-				<h1 id="home-event-name">{this.props.eventUserIsAttending.event_name}</h1>
-				<h3 id="home-event-date">{this.props.eventUserIsAttending.date_of_event}</h3>
-				<h4 id="home-event-location">{this.props.eventUserIsAttending.event_location}</h4>
-				<h4 id="home-event-description">{this.props.eventUserIsAttending.event_description}</h4>
-				<NewStatus createStatus={this.createStatus} />
-				<h3 id="news-feed">News Feed</h3>
-				<div style={{
-					display: 'flex',
-					justifyContent: 'center',
-					paddingTop: '20px',
-					paddingBottom: '20px'
-				}}>
-				<StatusList statuses={this.state.statuses} deleteStatus={this.deleteStatus} />
-				</div>
-				<h3 id="map-location">Event Location</h3>
-				<GoogleMap longitude={this.props.eventUserIsAttending.longitude} latitude={this.props.eventUserIsAttending.latitude} />
-			</React.Fragment>
+			<div>
+				{
+					<React.Fragment>
+						<h1 id="home-event-name">{this.props.eventUserIsAttending.event_name}</h1>
+						<h3 id="home-event-date">{this.props.eventUserIsAttending.date_of_event}</h3>
+						<h4 id="home-event-location">{this.props.eventUserIsAttending.event_location}</h4>
+						<h4 id="home-event-description">{this.props.eventUserIsAttending.event_description}</h4>
+						<NewStatus createStatus={this.createStatus} />
+						<h3 id="news-feed">News Feed</h3>
+						<div style={{
+							display: 'flex',
+							justifyContent: 'center',
+							paddingTop: '20px',
+							paddingBottom: '20px'
+						}}>
+						<StatusList statuses={this.state.statuses} deleteStatus={this.deleteStatus} editStatus={this.editStatus} />
+						</div>
+						<h3 id="map-location">Event Location</h3>
+						<GoogleMap longitude={this.props.eventUserIsAttending.longitude} latitude={this.props.eventUserIsAttending.latitude} />
+					</React.Fragment>
+				}
+				{
+					this.state.idOfStatusToEdit !== -1
+					&&
+					<EditStatus
+						key={this.state.idOfStatusToEdit}
+						statusToEdit={this.state.statuses.find((status) => status.id === this.state.idOfStatusToEdit)}
+						updateStatus={this.updateStatus}
+						closeModal={this.closeModal}
+					/>
+				}
+			</div>
 		)
 	}
 }
