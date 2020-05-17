@@ -158,3 +158,24 @@ background-color: #363D52;
 #home-event-location {
   color: #D3FF82;
 }
+
+#header-p {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 15px;
+}
+
+#event-description {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#event-longitude {
+  background-color: #111B1C;
+  color: #D3FF82;
+}
+
+#event-latitude {
+  background-color: #111B1C;
+  color: #D3FF82;
+}

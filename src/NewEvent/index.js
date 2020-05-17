@@ -74,7 +74,7 @@ export default class NewEvent extends Component {
 						placeholder="Enter date(s)"
 						onChange={this.handleChange}
 					/>
-					<Label id="event_description">Description of Event:</Label>
+					<Label id="event-description">Description of Event:</Label>
 					<Form.Input
 						type="text"
 						name="event_description"
